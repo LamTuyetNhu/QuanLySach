@@ -1,0 +1,166 @@
+@media (min-width: 992px) {
+  .category__menu {
+    display: none;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 992px) {
+  .logo {
+    padding-left: 5px;
+  }
+
+  .header-search {
+    width: auto;
+  }
+
+  .header__search-history {
+    width: 233px;
+  }
+
+  .header__cart-list {
+    margin-right: 20px;
+    right: -20px;
+  }
+
+  .hide-mobile-tablet {
+    display: none;
+  }
+
+  .header__cart-list::after {
+    right: 5%;
+  }
+
+  .category__menu {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo {
+    display: none;
+  }
+
+  .logo_unlogin {
+
+    margin-left: 50px;
+  }
+
+  .hidden-logo {
+    display: block;
+    z-index: 1;
+  }
+
+  .header-search {
+    width: 300px;
+    position: fixed;
+    cursor: pointer;
+    left: 15px;
+  }
+
+  .header-search__hidden {
+    border: none;
+    border-radius: 0;
+    background: none;
+  }
+
+  .card-item__find-block,
+  .search-input__hidden {
+    display: none;
+  }
+
+  .info-admin {
+    position: fixed;
+    right: 20px;
+  }
+
+  .info-admin h5 {
+    display: none;
+  }
+
+  .btnLogin {
+    position: fixed;
+    top: 13px;
+    right: 5px;
+    margin-left: 0px;
+}
+
+  .header__cart-list {
+    margin-right: 20px;
+    top: 73px;
+    right: -10px;
+    width: 210px;
+  }
+
+  .header__cart-list::after {
+    right: 2%;
+  }
+
+  .header__search-history {
+    top: calc(100% + 4px);
+    margin-left: 10px;
+    width: 264px;
+  }
+
+  /* .category__heading{
+    display: none;
+  }
+  .category-list__mobile {
+    padding: 10px;
+    display: none;
+  } */
+
+  /* .category {
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    display: none;
+    left: -10px;
+  } */
+
+  /* .category__heading-icon {
+    font-size: 2em;
+    margin-left: 25px;
+  } */
+
+  /* .category__menu {
+    background: rgba(46, 138, 138, 1);
+    position: fixed;
+    left: 0;
+    width: 75px;
+    cursor: pointer;
+  } */
+
+  /* .category__menu::after {
+    content: "";
+    top: 52%;
+    left: 74px;
+    position: absolute;
+    border: 20px solid;
+    transform: translateY(calc(-50% - 1px));
+    border-color: transparent transparent transparent rgba(46, 138, 138, 1);
+  } */
+
+  /* .category-list__mobile {
+    background-color: #fff;
+  } */
+
+  .container-menu {
+    display: none;
+    margin-top: 75px;
+  }
+
+  .mobile-category {
+    display: block;
+  }
+  .mobile-category {
+    margin-top: 75px;
+  }
+
+  .container-item {
+    margin-top: 35px;
+    padding-left: 28px;
+    justify-content: center;
+  }
+}

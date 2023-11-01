@@ -1,0 +1,96 @@
+.update {
+  font-size: 1.3em;
+  background-color: #fff !important;
+  margin: 64px 0;
+  padding: 32px 0 64px 0;
+}
+
+.update,
+.allbook,
+.addbook {
+  margin-top: 75px;
+}
+
+.table-allbook {
+  text-align: center;
+}
+
+.table-allbook th {
+  font-size: 1.4em;
+}
+
+.update-label {
+  font-size: 1.3em;
+  padding: 8px 0;
+  color: rgba(46, 138, 138, 1);
+}
+
+.update-header,
+.allbook-list,
+.addbook-list {
+  padding: 32px 0;
+  text-align: center;
+  margin: 0 32px;
+  color: rgba(46, 138, 138, 1);
+}
+
+.allbook-img {
+  width: 250px;
+}
+
+.allbook-btns,
+.allbook-title {
+  font-size: 1.4em;
+  vertical-align: inherit !important;
+}
+
+.allbook-form {
+  display: flex;
+  justify-content: center;
+}
+
+.allbook-button {
+  margin: 0 8px;
+  color: #fff;
+  background: rgba(46, 138, 138, 1);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 12px;
+}
+
+/* Add Book*/
+.addbook-list p {
+  display: grid;
+}
+
+.addbook-list label {
+  color: #000;
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+.addbook-list input,
+.addbook-list textarea {
+  font-size: 1.2rem;
+    height: 35px;
+    padding-left: 10px;
+    border: 1px solid rgba(46, 138, 138, 1);
+    border-radius: 50px  ;
+    background: none;
+}
+
+.addbook-list textarea {
+  height: auto;
+  padding-left: 15px;
+  border-radius: 30px  ;
+}
+
+.btnRight {
+  font-size: 1.4em;
+  margin-bottom: 16px;
+  margin-left: auto;
+  display: flex;
+}

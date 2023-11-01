@@ -1,0 +1,164 @@
+.container-detail {
+  height: 100vh;
+  /* height: 1000px; */
+}
+
+.detail-book__item {
+  width: 100%;
+}
+.detail-book {
+  width: auto;
+  display: flex;
+  padding: 32px;
+  background: #fff;
+}
+
+.detail-img {
+}
+.detail-img__main {
+  width: 100%;
+}
+.detail-body {
+  margin-top: 32px;
+}
+.detail-author {
+  font-size: 1.4em;
+  color: #a2a2a2;
+  font-style: italic;
+}
+.detail-title {
+  margin: 16px 0;
+  color: rgb(211, 19, 19);
+  font-size: 2.6em;
+}
+.detail-item {
+}
+.detail-price {
+  font-size: 1.3em;
+}
+.detail-quantity {
+}
+.detail-submit {
+}
+
+.detail-description {
+  font-style: italic;
+  font-size: 1.2em;
+  margin-top: 32px;
+  /* padding: 32px; */
+  background: #fff;
+  overflow: hidden;
+}
+
+.detail-description {
+  /* text-overflow: ellipsis;  */
+  /* word-wrap: normal; */
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  display: none;
+ /* border-radius: 5px; */
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-container {
+  position: relative;
+  background-color: #fff;
+  width: 900px;
+  max-width: calc(100% - 32px);
+  min-height: 200px;
+  animation: modalFadeIn ease 0.4s;
+}
+
+.icon-close1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  font-size: 2em;
+  display: flex;
+  background: rgba(46, 138, 138, 1);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  border-top-right-radius: 0.3rem;
+}
+
+.icon-close1:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.modal-header {
+  background: rgba(46, 138, 138, 1);
+  height: 130px;
+  /* display: flex; */
+  align-items: center;
+  /* justify-content: center; */
+  /* font-size: 30px; */
+  color: #fff;
+  font-size: 46px;
+  text-align: center;
+
+}
+
+.modal-header__center{
+  left: 0;
+    position: absolute;
+    right: 0;
+    top: 25px;
+}
+
+.icon-bag {
+  margin-right: 16px;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+.modal-label {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.modal-input {
+  border: 1px solid #ccc;
+  width: calc(100% - 1px);
+  height: 43px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.buy-stickets {
+  background: rgba(46, 138, 138, 1);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  border: none;
+  width: 100%;
+  padding: 18px;
+  cursor: pointer;
+}
+
+.buy-stickets:hover {
+  color: #000;
+  background-color: #ccc;
+  cursor: pointer;
+}

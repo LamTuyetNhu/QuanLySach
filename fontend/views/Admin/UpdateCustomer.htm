@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cập nhật khách hàng</title>
+    <!--  font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- my css -->
+    <link rel="stylesheet" href="../css/allbook.css" />
+    <link rel="stylesheet" href="../css/css.css" />
+    <link rel="stylesheet" href="../css/details.css" />
+    <link rel="stylesheet" href="../css/onlogin.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- icon -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <header> -->
+      <div class="">
+        <div class="header-unlogin">
+          <a href="AllCustomer.htm" class="logo hidden-logo">BOOKKOOB</a>
+
+          <div class="header-search btn-search header-search__hidden">
+            <ion-icon class="search-icon" name="search-outline"></ion-icon>
+
+            <input
+              id="search-input"
+              class="search-input search-input__hidden"
+              type="text"
+              placeholder="Tên, email khách hàng bạn muốn tìm"
+            />
+
+            <button class="card-item__find card-item__find-block" type="">
+              Tìm
+            </button>
+          </div>
+
+          <div class="info-admin">
+            <h5 id="username"></h5>
+            <img src="../img/user.png" alt="" class="info-admin__img" />
+            <div class="header__cart-list">
+              <h4 class="header__cart-heading">Quản lý sách</h4>
+              <ul class="header__cart-list-item">
+                <li class="header__cart-item">
+                  <a href="AllBook.htm" class="header__cart-item-info"
+                    >Tất cả sách</a
+                  >
+                </li>
+
+                <li class="header__cart-item">
+                  <a href="AllCategory.htm" class="header__cart-item-info"
+                    >Thể loại</a
+                  >
+                </li>
+
+                <li class="header__cart-item">
+                  <a href="AllOrder.htm" class="header__cart-item-info">
+                    Thông tin đặt sách
+                  </a>
+                </li>
+
+                <li class="header__cart-item">
+                  <a href="AllCustomer.htm" class="header__cart-item-info"
+                    >Thông tin khách hàng</a
+                  >
+                </li>
+
+                <li class="header__cart-item">
+                  <a href="InfoAdmin.htm" class="header__cart-item-info"
+                    >Thông tin của bạn</a
+                  >
+                </li>
+
+                <li class="header__cart-item">
+                  <a href="LoginAdmin.htm" class="header__cart-item-info"
+                    >Đăng xuất</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container -->
+      <div class="container_">
+        <div class="container update">
+          <h2 class="update-header">Cập nhật khách hàng</h2>
+          <div id="reUpdate"></div>
+        </div>
+
+        <div
+          class="modal fade"
+          id="successModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="successModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-body">Cập nhật thành công!</div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn-modal btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Đóng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade"
+          id="failModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="successModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-body">Cập nhật thất bại!</div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn-modal btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Đóng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="/js/action.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* Logo */
+        const logo = document.querySelector(".logo");
+        logo.addEventListener("click", function () {
+          window.location.href = "AllCustomer.htm";
+        });
+
+        /* Sách */
+        const updateCusId = localStorage.getItem("updateCusId");
+        axios
+          .get(`http://localhost:3000/api/detailCus/${updateCusId}`)
+          .then((response) => {
+            const dataUser = response.data.dataUser;
+
+            var details = document.getElementById("reUpdate");
+
+            details.innerHTML = `
+                  <p>
+                    <label class="update-label">Tên khách hàng</label>
+                    <input
+                      id="nameUser"
+                      class="w3-input"
+                      type="text"
+                      name="username"
+                      value="${dataUser.username}"
+                      required
+                    />
+                  </p>
+                  <p>
+                    <label class="update-label">Email</label>
+                    <input
+                      id="email"
+                      class="w3-input"
+                      type="text"
+                      name="email"
+                      value="${dataUser.email}"
+                      required
+                    />
+                  </p>
+                  <p>
+                    <label class="update-label">Địa chỉ</label>
+                    <input
+                      id="address"
+                      class="w3-input"
+                      type="text"
+                      name="address"
+                      value="${dataUser.address}"
+                      required
+                    />
+                  </p>
+                  <p>
+                    <label class="update-label">Số điện thoại</label>
+                    <input
+                      id="phoneNumber"
+                      class="w3-input"
+                      type="text"
+                      name="phoneNumber"
+                      value="${dataUser.phoneNumber}"
+                      required
+                    />
+                  </p>
+
+                  <button id="updateCus" class="btn-center w3-button w3-teal" type="submit">Save</button>
+              `;
+
+            var updateCus = document.getElementById("updateCus");
+
+            updateCus.addEventListener("click", function () {
+              const username = document.getElementById("nameUser").value;
+              const email = document.getElementById("email").value;
+              const address = document.getElementById("address").value;
+              const phoneNumber = document.getElementById("phoneNumber").value;
+
+              // Tạo đối tượng dữ liệu để gửi lên server
+              const dataToUpdate = {
+                username: username,
+                email: email,
+                address: address,
+                phoneNumber: phoneNumber,
+                idUser: updateCusId,
+              };
+
+                axios
+                  .post(
+                    "http://localhost:3000/api/updateCustomer",
+                    dataToUpdate
+                  )
+                  .then((response) => {
+                    $("#successModal").modal("show");
+
+                    setTimeout(function () {
+                      window.location.href = "AllCustomer.htm";
+                    }, 2000);
+                  })
+                  .catch((error) => {
+                    $("#failModal").modal("show");
+                    setTimeout(function () {}, 2000);
+                    return;
+                  });
+            });
+          })
+          .catch((error) => {
+            console.error("Lỗi khi lấy thông tin sách:", error);
+          });
+
+        axios
+          .get("http://localhost:3000/api/infoAdmin")
+          .then((response) => {
+            var dataAdmin = response.data.dataAdmin;
+
+            const username = document.getElementById("username");
+            username.innerText = `${dataAdmin.username}`;
+          })
+          .catch((error) => {
+            console.error("Lỗi khi lấy thông tin Admin:", error);
+          });
+      });
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

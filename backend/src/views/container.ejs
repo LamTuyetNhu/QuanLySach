@@ -1,0 +1,36 @@
+<div class="row">
+      <% for(let i=0; i < dataBook.length; i++) { %>
+      <form
+        action="/detail/book/<%= dataBook[i].idBook %>"
+        class="book-item col-lg-4 col-md-6 col-sm-12 "
+        id="detailBook"
+      >
+      <!-- col-sm-6 col-lg-4 -->
+      <!-- <div class="card card-book-item" style="width: 18rem"> -->
+        <div class="card card-book-item">
+          <div class="card-img">
+            <img
+              class="card-img-top"
+              src="<%= 'http://localhost:3000/image/' +  dataBook[i].image %>"
+              alt="<%= dataBook[i].bookTitle %>"
+            />
+          </div>
+          <div class="card-body">
+            <div class="card-item" href="">
+              <h5 class="card-title"><%= dataBook[i].bookTitle %></h5>
+              <div class="card-item__col">
+                <div class="">
+                  <p class="card-price"><%= dataBook[i].price %>đ</p>
+                  <p class="card-quantity">
+                    Còn lại: <%= dataBook[i].quantity %>
+                  </p>
+                </div>
+                <button class="card-item__watch" type="submit">Xem</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <% } %>
+    </div>
+

@@ -1,0 +1,62 @@
+<div class="header-unlogin">
+  <a href="/loginADMIN" class="logo hidden-logo">BOOKKOOB</a>
+
+  <div class="header-search btn-search header-search__hidden">
+    <ion-icon class="search-icon" name="search-outline"></ion-icon>
+
+    <input
+      id="search-input"
+      class="search-input search-input__hidden"
+      type="text"
+      placeholder="Tên sách, tác giả bạn muốn tìm"
+    />
+
+    <button class="card-item__find card-item__find-block" type="">Tìm</button>
+
+    <div class="header__search-history header__search-history-hidden">
+      <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+      <ul class="header__search-history-list">
+        <li class="header__search-history-item">
+          <a href="">Nam Cao</a>
+        </li>
+        <li class="header__search-history-item">
+          <a href="">Chí Phèo</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-admin">
+    <h5>ADMIN</h5>
+    <img src="/image/user.png" alt="" class="info-admin__img" />
+    <div class="header__cart-list">
+      <h4 class="header__cart-heading">Quản lý sách</h4>
+      <ul class="header__cart-list-item">
+        <li class="header__cart-item">
+          <a href="/login/admin/addBook" class="header__cart-item-info"
+            >Thêm sách</a
+          >
+        </li>
+        <li class="header__cart-item">
+          <a href="/login/admin/allbook" class="header__cart-item-info"
+            >Cập nhật sách</a
+          >
+        </li>
+
+        <li class="header__cart-item">
+          <a class="header__cart-item-info"> Thông tin đặt sách </a>
+        </li>
+
+        <li class="header__cart-item">
+          <a href="/login/admin/customer" class="header__cart-item-info"
+            >Thông tin khách hàng</a
+          >
+        </li>
+
+        <li class="header__cart-item">
+          <a href="/" class="header__cart-item-info">Đăng xuất</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+*
+- Khởi tạo package.json: npm init 
+- Express: npm install express
+- npm install
+- npm install ejs
+- npm install body-parser
+- npm install -g nodemon
+- npm install --save-dev @babel/core
+- npm install --save-dev @babel/node
+- npm install --save-dev @babel/preset-env
+- npm install dotenv --save
+- npm install --save multer
+- npm i -S app-root-path
+/**/
+npm install -g express-generator
+npm install express-session
+npm i bcrypt
+npm i passport passport-local express-session express-flash: Dùng để so khớp email, password

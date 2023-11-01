@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Document</title>
+
+    <!--  font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- my css -->
+    <link rel="stylesheet" href="../css/allbook.css" />
+    <link rel="stylesheet" href="../css/css.css" />
+    <link rel="stylesheet" href="../css/details.css" />
+    <link rel="stylesheet" href="../css/onlogin.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- icon -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <header> -->
+      <div class="header-unlogin">
+        <a class="logo hidden-logo"
+          >BOOKKOOB</a
+        >
+
+        <div class="header-search btn-search header-search__hidden">
+          <ion-icon class="search-icon" name="search-outline"></ion-icon>
+
+          <input
+            id="search-input"
+            class="search-input search-input__hidden"
+            type="text"
+            placeholder="Tên sách, tác giả bạn muốn tìm"
+          />
+
+          <button
+            id="find"
+            class="card-item__find card-item__find-block"
+            type=""
+          >
+            Tìm
+          </button>
+
+          <div class="header__search-history header__search-history-hidden">
+            <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+            <ul class="header__search-history-list">
+              <li class="header__search-history-item">
+                <a href="">Nam Cao</a>
+              </li>
+              <li class="header__search-history-item">
+                <a href="">Chí Phèo</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-admin">
+          <h5>Tuyết Như</h5>
+          <img src="" alt="" class="info-admin__img" />
+          <div class="header__cart-list">
+            <h4 class="header__cart-heading">Sách của tôi</h4>
+            <ul class="header__cart-list-item">
+              <li class="header__cart-item">
+                <a href="#" class="header__cart-item-info"
+                  >Giỏ hàng</a
+                >
+              </li>
+              <li class="header__cart-item">
+                <a class="header__cart-item-info"> Thông tin đặt sách </a>
+              </li>
+              <li class="header__cart-item">
+                <a class="header__cart-item-info"> Thông tin của tôi </a>
+              </li>
+      
+              <li class="header__cart-item">
+                <a href="/" class="header__cart-item-info">Đăng xuất</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container -->
+      <div class="container_">
+        <div class="row">
+          <div class="col-3 cateMenu container-menu">
+            <nav id="menu__category" class="category">
+              <h3 class="category__heading">
+                <ion-icon
+                  class="category__heading-icon"
+                  name="list-outline"
+                ></ion-icon>
+                Danh mục
+              </h3>
+
+              <ul
+                id="category"
+                class="category-list category-list__mobile"
+              >
+            </ul>
+            </nav>
+          </div>
+
+          <div class="col-9 container">
+            <div class="mobile-category">
+              <ul class="mobile-category__list">
+                <li class="mobile-category__item">
+                  <a href="" class="mobile-category__link">Văn học Việt Nam</a>
+                </li>
+                <li class="mobile-category__item">
+                  <a href="" class="mobile-category__link"
+                    >Văn học nước ngoài</a
+                  >
+                </li>
+                <li class="mobile-category__item">
+                  <a href="" class="mobile-category__link">Truyện tranh</a>
+                </li>
+                <li class="mobile-category__item">
+                  <a href="" class="mobile-category__link">Tiểu thuyết</a>
+                </li>
+                <li class="mobile-category__item">
+                  <a href="" class="mobile-category__link">Sách thiếu nhi</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="container-item">
+              <div id="bookList" class="row"></div>
+            </div>
+            <!-- <div class="container-item"><%- include('menuNumber') -%></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* Logo */
+        const logo = document.querySelector(".logo");
+        logo.addEventListener("click", function() {
+          window.location.href = "HomePage.htm"
+        })
+
+        /* Login */
+        const login = document.querySelector(".btnLogin");
+        login.addEventListener("click", function() {
+          window.location.href = "Login.htm"
+        })
+
+        /* Tìm kiếm */
+        const findButton = document.getElementById("find");
+        findButton.addEventListener("click", function () {
+          const searchInput = document.getElementById("search-input").value;
+
+          const dataSearch = {
+            input: searchInput,
+          };
+
+          axios
+            .post("http://localhost:3000/api/searchBook", dataSearch)
+            .then((response) => {
+              const searchResults = response.data.dataBook;
+
+              var bookList = document.getElementById("bookList");
+              bookList.innerHTML = "";
+
+              if (searchResults.length == 0) {
+                var bookItem = document.createElement("div");
+                bookItem.classList.add("errorSearch");
+                bookItem.innerHTML = "Không tìm thấy kết quả!";
+                bookList.appendChild(bookItem);
+              }
+
+              searchResults.forEach((book) => {
+                var BookForm = document.createElement("form");
+                BookForm.classList.add(
+                  "book-item",
+                  "col-lg-4",
+                  "col-md-6",
+                  "col-sm-12"
+                );
+                BookForm.innerHTML = `
+                  <div class="card card-book-item">
+                    <div class="card-img">
+                      <img
+                        class="card-img-top"
+                        src="'http://localhost:3000/image/' +  ${book.image}"
+                        alt="${book.bookTitle}"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <div class="card-item">
+                        <h5 class="card-title">${book.bookTitle}</h5>
+                        <div class="card-item__col">
+                          <div class="">
+                            <p class="card-price">${book.price}đ</p>
+                            <p class="card-quantity">
+                              Còn lại: ${book.quantity}
+                            </p>
+                          </div>
+                          <button id="detailBook" class="card-item__watch" data-id="${book.idBook}" type="submit">Xem</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                      `;
+
+                bookList.appendChild(BookForm);
+              });
+
+              /* Chi tiết */
+              var btnDetCuses =
+                document.querySelectorAll(".card-item__watch");
+              for (let i = 0; i < btnDetCuses.length; i++) {
+                let btnDetCus = btnDetCuses[i];
+                btnDetCus.addEventListener("click", function () {
+                  var selectedBookId = this.getAttribute("data-id");
+                  if (selectedBookId !== undefined) {
+                    localStorage.setItem("selectedBook", selectedBookId);
+                    window.location.href = "DetailBook.htm";
+                    alert("Chào");
+                  } else {
+                    alert("Không thể hiện thị trang!");
+                  }
+                });
+              }
+            });
+        });
+
+        /* Trang chủ */
+        axios
+          .get("http://localhost:3000/api")
+          .then((response) => {
+            var dataBook = response.data.dataBook;
+
+            var bookList = document.getElementById("bookList");
+            dataBook.forEach((book) => {
+              var BookForm = document.createElement("form");
+              BookForm.classList.add(
+                "book-item",
+                "col-lg-4",
+                "col-md-6",
+                "col-sm-12"
+              );
+              BookForm.innerHTML = `
+                  <div class="card card-book-item">
+                    <div class="card-img">
+                      <img
+                        class="card-img-top"
+                        src="'http://localhost:3000/image/' +  ${book.image}"
+                        alt="${book.bookTitle}"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <div class="card-item">
+                        <h5 class="card-title">${book.bookTitle}</h5>
+                        <div class="card-item__col">
+                          <div class="">
+                            <p class="card-price">${book.price}đ</p>
+                            <p class="card-quantity">
+                              Còn lại: ${book.quantity}
+                            </p>
+                          </div>
+                          <button class="card-item__watch" data-id="${book.idBook}" type="submit">Xem</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                      `;
+
+              bookList.appendChild(BookForm);
+            });
+
+            /* Chi tiết */
+            var selectedBookId;
+            var btnDetCuses = document.getElementsByClassName("card-item__watch");
+            for (let i = 0; i < btnDetCuses.length; i++) {
+              let btnDetCus = btnDetCuses[i];
+
+              btnDetCus.addEventListener("click", function () {
+                selectedBookId = this.getAttribute("data-id");
+
+                if (selectedBookId !== undefined) {
+                  localStorage.setItem("selectedBook", selectedBookId);
+                  window.location.href = "DetailBook.htm";
+                  alert("Chào")
+                } else {
+                  alert("Không thể hiện thị trang!");
+                }
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Lỗi khi lấy thông tin người dùng:", error);
+          });
+
+        /* Thể loại */
+        axios.get("http://localhost:3000/api/category").then((response) => {
+          var dataCategory = response.data.dataCategory;
+
+          var categoryList = document.getElementById("category");
+          dataCategory.forEach((category) => {
+            var cateUl = document.createElement("li");
+            cateUl.classList.add("category-item");
+            cateUl.innerHTML = `
+              <a class="category-item__link" data-id="${category.idCategory}">${category.nameCategory}</a>
+            `;
+            categoryList.appendChild(cateUl);
+          });
+
+          const categoryLinks = document.querySelectorAll(
+            ".category-item__link"
+          );
+          for (let i = 0; i < categoryLinks.length; i++) {
+            let categoryLink = categoryLinks[i];
+
+            categoryLink.addEventListener("click", function () {
+              const searchInput = this.getAttribute("data-id");
+
+              const dataSearch = {
+                input: searchInput,
+              };
+
+              axios
+                .post("http://localhost:3000/api/searchBook", dataSearch)
+                .then((response) => {
+                  const searchResults = response.data.dataBook;
+
+                  console.log(searchResults);
+                  var bookList = document.getElementById("bookList");
+                  bookList.innerHTML = "";
+
+                  if (searchResults.length == 0) {
+                    var bookItem = document.createElement("div");
+                    bookItem.classList.add("errorSearch");
+                    bookItem.innerHTML = "Không tìm thấy kết quả!";
+                    bookList.appendChild(bookItem);
+                  }
+
+                  searchResults.forEach((book) => {
+                    var BookForm = document.createElement("form");
+                    BookForm.classList.add(
+                      "book-item",
+                      "col-lg-4",
+                      "col-md-6",
+                      "col-sm-12"
+                    );
+                    BookForm.innerHTML = `
+                          <div class="card card-book-item">
+                            <div class="card-img">
+                              <img
+                                class="card-img-top"
+                                src="'http://localhost:3000/image/' +  ${book.image}"
+                                alt="${book.bookTitle}"
+                              />
+                            </div>
+                            <div class="card-body">
+                              <div class="card-item">
+                                <h5 class="card-title">${book.bookTitle}</h5>
+                                <div class="card-item__col">
+                                  <div class="">
+                                    <p class="card-price">${book.price}đ</p>
+                                    <p class="card-quantity">
+                                      Còn lại: ${book.quantity}
+                                    </p>
+                                  </div>
+                                  <button id="detailBook" class="card-item__watch" data-id="${book.idBook}" type="submit">Xem</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                              `;
+
+                    bookList.appendChild(BookForm);
+                  });
+
+                  /* Chi tiết */
+                  var selectedBookId;
+                  var btnDetCuses =
+                    document.querySelectorAll(".card-item__watch");
+                  for (let i = 0; i < btnDetCuses.length; i++) {
+                    let btnDetCus = btnDetCuses[i];
+                    btnDetCus.addEventListener("click", function () {
+                      selectedBookId = this.getAttribute("data-id");
+                      if (selectedBookId !== undefined) {
+                        localStorage.setItem("selectedBook", selectedBookId);
+                        window.location.href = "DetailBook.htm";
+                        alert("Chào");
+                      } else {
+                        alert("Không thể hiện thị trang!");
+                      }
+                    });
+                  }
+                });
+            });
+          }
+        });
+      });
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

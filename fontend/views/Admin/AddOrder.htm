@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm đơn hàng</title>
+    <!--  font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- my css -->
+    <link rel="stylesheet" href="../css/allbook.css" />
+    <link rel="stylesheet" href="../css/css.css" />
+    <link rel="stylesheet" href="../css/details.css" />
+    <link rel="stylesheet" href="../css/onlogin.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- icon -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <header> -->
+        <div class="">
+          <div class="header-unlogin">
+            <a href="AllOrder.htm" class="logo hidden-logo">BOOKKOOB</a>
+          
+            <div class="header-search btn-search header-search__hidden">
+              <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          
+              <input
+                id="search-input"
+                class="search-input search-input__hidden"
+                type="text"
+                placeholder="Đơn hàng bạn muốn tìm"
+              />
+          
+              <button class="card-item__find card-item__find-block" type="">Tìm</button>
+            </div>
+          
+            <div class="info-admin">
+              <h5 id="username"></h5>
+              <img src="../img/user.png" alt="" class="info-admin__img" />
+              <div class="header__cart-list">
+                <h4 class="header__cart-heading">Quản lý sách</h4>
+                <ul class="header__cart-list-item">
+                  <li class="header__cart-item">
+                    <a href="AllBook.htm" class="header__cart-item-info"
+                      >Tất cả sách</a
+                    >
+                  </li>
+  
+                  <li class="header__cart-item">
+                    <a href="AllCategory.htm" class="header__cart-item-info"
+                      >Thể loại</a
+                    >
+                  </li>
+          
+                  <li class="header__cart-item">
+                    <a href="AllOrder.htm" class="header__cart-item-info"> Thông tin đặt sách </a>
+                  </li>
+          
+                  <li class="header__cart-item">
+                    <a href="AllCustomer.htm" class="header__cart-item-info"
+                      >Thông tin khách hàng</a
+                    >
+                  </li>
+  
+                  
+                  <li class="header__cart-item">
+                    <a href="InfoAdmin.htm" class="header__cart-item-info"
+                      >Thông tin của bạn</a
+                    >
+                  </li>
+          
+                  <li class="header__cart-item">
+                    <a href="LoginAdmin.htm" class="header__cart-item-info">Đăng xuất</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+      <!-- Container -->
+      <div class="container_">
+        <div class="container addbook">
+          <form class="addbook-list">
+            <h2>Thêm Đơn Hàng</h2>
+            <div class="form-addOrder">
+              <div class="addOrder-item">
+                <p>
+                  <label>Tên khách hàng</label>
+                  <input class="addBook-input" type="text" name="username" required />
+                </p>
+                <p>
+                  <label>Địa chỉ</label>
+                  <input class="addBook-input" type="text" name="address" required />
+                </p>
+                <p>
+                  <label>Email</label>
+                  <input class="addBook-input" type="email" name="email" required />
+                </p>
+                <p>
+                  <label>Số điện thoại</label>
+                  <input class="addBook-input" type="text" name="phoneNumber" required />
+                </p>
+              </div>
+              <div class="addOrder-item">
+                <p>
+                  <label>Tên sách</label>
+                  <input id="bookTitle" class="addBook-input" type="text" name="bookTitle" required />
+                </p>
+                <p>
+                  <label>Số lượng</label>
+                  <input id="soluongDH" class="addBook-input" type="number" name="soluongDH" required />
+                </p>
+                <p>
+                  <label>Ngày đặt</label>
+                  <input id="ngayDat" class="addBook-input" type="date" name="ngayDat" required />
+                </p>
+                <p>
+                  <label>Ngày giao hàng dự kiến</label>
+                  <input id="ngayGiao" class="addBook-input" type="date" name="ngayGiao" required />
+                </p>
+              </div>
+            </div>
+            <div class="">
+              <button class="allbook-button" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                Tạo thành công!
+              </div>
+              <div class="modal-body">
+                  <div class="orderSucc">Đơn giá: <p id="price"></p></div>
+                  <div class="orderSucc">Số lượng:<p id="soluongDHg"></p></div>
+                  <div class="orderSucc">Thành tiền: <p id="sum"></p></div>
+              
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-modal btn btn-danger" data-dismiss="modal">Đóng</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-body">
+                  Tạo thất bại!
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-modal btn btn-danger" data-dismiss="modal">Đóng</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/price.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector('.addbook-list');
+        form.addEventListener('submit', function (event) {
+          event.preventDefault(); 
+          const username = form.elements.username.value;
+          const email = form.elements.email.value;
+          const address = form.elements.address.value;
+          const phoneNumber = form.elements.phoneNumber.value;
+
+          const bookTitle = form.elements.bookTitle.value;
+          const soluongDH = form.elements.soluongDH.value;
+          const ngayDat = form.elements.ngayDat.value;
+          const ngayGiao = form.elements.ngayGiao.value;
+
+          const data = {
+            username: username,
+            email: email,
+            address: address,
+            phoneNumber: phoneNumber,
+            bookTitle: bookTitle,
+            soluongDH: soluongDH,
+            ngayDat: ngayDat,
+            ngayGiao: ngayGiao
+          }
+
+          console.log(data)
+          
+          axios
+          .post("http://localhost:3000/api/createOrder", data)
+          .then((response) => {
+            const dataBook = response.data.dataBook;
+
+            const price = document.getElementById("price").innerText = `${dataBook.price}`;
+            const soluongDHg = document.getElementById("soluongDHg")
+            const sum = document.getElementById("sum")
+
+            price1 = `${dataBook.price}`;
+            soluongDHg.innerText = soluongDH;
+
+            var sumMoney = price1*soluongDH;
+            sum.innerText = sumMoney;
+
+            $("#successModal").modal("show");
+          })
+          .catch((error) => {
+            $("#failModal").modal("show");
+
+                    setTimeout(function () {
+                    }, 2000);
+            console.error("Lỗi khi thêm khách hàng:", error);
+          });
+        })
+
+        axios
+            .get("http://localhost:3000/api/infoAdmin")
+            .then((response) => {
+              var dataAdmin = response.data.dataAdmin;
+
+              const username = document.getElementById("username")
+              username.innerText = `${dataAdmin.username }`;
+            })
+            .catch((error) => {
+              console.error("Lỗi khi lấy thông tin Admin:", error);
+            });
+      })
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

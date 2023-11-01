@@ -1,0 +1,98 @@
+<div class="mt-4">
+  <div class="row">
+    <!-- <form action="#" class="detail-book__item" id="detailBook"> -->
+
+      <div class="detail-book__item" id="detailBook">
+      <div class="detail-book">
+        <div class="detail-img col-4">
+          <div class="">
+            <img
+              class="detail-img__main"
+              src="<%= 'http://localhost:3000/image/' +  dataBook.image %>"
+              alt="<%= dataBook.bookTitle %>"
+            />
+          </div>
+          <!-- <div class=""></div> -->
+        </div>
+        <div class="detail-body col-8">
+          <div class="detail-info">
+            <h5 class="detail-author"><%= dataBook.author %></h5>
+            <h2 class="detail-title"><%= dataBook.bookTitle %></h2>
+            <div class="detail-item">
+              <div class="">
+                <p class="detail-price"><%= dataBook.price %>đ</p>
+              </div>
+              <button class="card-item__watch buy-btn" type="submit">Mượn Sách</button>
+            </div>
+          </div>
+          <!-- <div class="detail-des">
+            <p class="d etail-description">
+              <h3>Mô tả</h3>
+              <%= dataBook.description %></p>
+          </div> -->
+        </div>
+      </div>
+      <div class="detail-des">
+        <p class="detail-description">
+          <h3>Mô tả</h3>
+          <%= dataBook.description %></p>
+      </div>
+
+      
+    <!-- </form> -->
+  </div>
+  </div>
+</div>
+
+<form action="#" method="post">
+
+  <div class="modal">
+    <div class="modal-container">
+      <div class="modal-close">
+        <ion-icon class="icon-close1" name="close-outline"></ion-icon>
+      </div>
+  
+      <header class="modal-header">
+        <!-- <ion-icon name="bag-handle-outline"></ion-icon> -->
+        <p class="form-box modal-header__center"><ion-icon class="icon-bag" name="bag-handle-outline"></ion-icon>Đặt hàng</p>
+      </header>
+  
+      <div class="modal-body">
+        <label for="username" class="modal-label">
+          Người nhận
+        </label>
+        <input
+          id="username"
+          type="text"
+          class="modal-input"
+          placeholder="Tên người nhận"
+        />
+
+        <label for="quantity" class="modal-label">
+         Số lượng
+        </label>
+        <input
+          id="quantity"
+          type="number"
+          class="modal-input"
+        />
+  
+        <label for="address" class="modal-label">
+          Địa chỉ
+        </label>
+        <input
+          id="address"
+          type="text"
+          class="modal-input"
+          placeholder="Địa chỉ nhận hàng"
+        />
+  
+        <button class="buy-stickets">
+          Đặt ngay
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </button>
+      </div>
+  
+    </div>
+  </div>
+</form>
